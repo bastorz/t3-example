@@ -6,15 +6,28 @@ export const answerRouter = createTRPCRouter({
   submitAnswer: publicProcedure
     .input(
       z.object({
-        answerText: z.string(),
         conversationId: z.string(),
+        answerText: z.string(),
       })
     )
     .mutation(({ ctx, input }) => {
-      ctx.prisma.answer.create({
+      return ctx.prisma.answer.create({
         data: {
           conversationId: input.conversationId,
           text: input.answerText,
+        },
+      });
+    }),
+  getAnswer: publicProcedure
+    .input(
+      z.object({
+        answerId: z.string(),
+      })
+    )
+    .query(({ ctx, input }) => {
+      return ctx.prisma.answer.findUnique({
+        where: {
+          id: input.answerId,
         },
       });
     }),

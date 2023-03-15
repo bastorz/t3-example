@@ -10,7 +10,7 @@ export const questionRouter = createTRPCRouter({
         questionText: z.string(),
       })
     )
-    .mutation(async ({ ctx, input }) => {
+    .mutation(({ ctx, input }) => {
       return ctx.prisma.question.create({
         data: {
           conversationId: input.conversationId,

@@ -4,3 +4,7 @@ interface NewMessage {
     content: string | ChatCompletionResponseMessage | undefined;
   };
 }
+
+interface Conversation {
+  id: string;
+}

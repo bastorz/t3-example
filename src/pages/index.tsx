@@ -4,6 +4,7 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import ChatPage from "./components/ChatPage";
+import WelcomePage from "./components/WelcomePage";
 
 const Home: NextPage = () => {
   return (
@@ -13,13 +14,7 @@ const Home: NextPage = () => {
         <meta name="description" content="ChatBot GPT" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-gray-700">
-        <ChatPage
-          params={{
-            id: "2:08",
-          }}
-        />
-      </main>
+      <WelcomePage />
     </>
   );
 };

@@ -1,8 +1,10 @@
+import postAnswer from "lib/postAnswer";
 import query from "lib/queryApi";
 import { NextApiRequest, NextApiResponse } from "next";
+import { api } from "~/utils/api";
 
 type Data = {
-  answer: string | any;
+  answer: string;
 };
 
 export default async function handler(
@@ -10,7 +12,6 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { model, messages } = req.body;
-  console.log(model, messages, "model, messages");
   if (!messages) {
     res.status(400).json({ answer: "Please provide a prompt!" });
     return;
@@ -18,7 +19,7 @@ export default async function handler(
 
   // ChatGPT Query
 
-  const response = await query(model, messages);
+  const response = await query(model, messages).then();
 
   const resMessage: NewMessage = {
     messages: {
@@ -27,8 +28,10 @@ export default async function handler(
     },
   };
 
-  // Post message to database ?
+  // const answer = await postAnswer(resMessage);
+
+  const data = resMessage.messages.content.content;
 
   res.status(200).json({ answer: resMessage.messages.content });
-  console.log(resMessage.messages.content, "response");
+  console.log(resMessage.messages.content.content, "responsePerrito");
 }

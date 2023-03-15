@@ -1,14 +1,11 @@
-"use client";
-
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { FormEvent, useState } from "react";
+import { api } from "~/utils/api";
 
-type Props = {
-  newMessages: NewMessage[];
-};
-
-export const ChatInput = ({ newMessages }: Props) => {
+export const ChatInput = () => {
   const [prompt, setPrompt] = useState("");
+  const submitQuestion = api.question.submitQuestion.useMutation();
+  const submitAnswer = api.answer.submitAnswer.useMutation();
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,13 +18,12 @@ export const ChatInput = ({ newMessages }: Props) => {
       },
     ];
 
-    console.log(prompt, "prompt");
+    submitQuestion.mutateAsync({
+      conversationId: "clfa6r5pv007aunu4l94lgbfb",
+      questionText: prompt,
+    });
 
-    // await "here i'll create the function to send the message to the database";
-
-    // Toast notification to say successful!
-
-    await fetch("/api/auth/askQuestion", {
+    const response = await fetch("/api/auth/askQuestion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,6 +32,13 @@ export const ChatInput = ({ newMessages }: Props) => {
         model: "gpt-3.5-turbo",
         messages: newMessages,
       }),
+    }).then((response) => response.json());
+
+    const answer = response.answer.content.toString();
+
+    submitAnswer.mutateAsync({
+      conversationId: "clfa6r5pv007aunu4l94lgbfb",
+      answerText: answer,
     });
   };
 

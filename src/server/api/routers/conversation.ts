@@ -20,4 +20,9 @@ export const conversationRouter = createTRPCRouter({
         },
       });
     }),
+  createConversation: publicProcedure.mutation(({ ctx, input }) => {
+    return ctx.prisma.conversation.create({
+      data: {},
+    });
+  }),
 });
