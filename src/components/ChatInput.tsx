@@ -32,6 +32,8 @@ export const ChatInput = () => {
       role: "user",
     });
 
+    setPrompt("");
+
     const response = await fetch("/api/auth/askQuestion", {
       method: "POST",
       headers: {

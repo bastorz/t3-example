@@ -8,6 +8,8 @@ function Sidebar() {
   const { data: session } = useSession();
   const userId = session?.user.id as string;
 
+  console.log(userId, "userId");
+
   const conversations = api.user.getUser.useQuery({
     userId,
   });
