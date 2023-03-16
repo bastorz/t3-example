@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
-import Sidebar from "../components/Sidebar";
-import Login from "../components/Login";
+import Sidebar from "../../components/Sidebar";
+import Login from "../../components/Login";
 
 const Home: NextPage = () => {
   const session = useSession();

@@ -26,16 +26,11 @@ export const ChatInput = () => {
       },
     ];
 
-    submitQuestion
-      .mutateAsync({
-        conversationId: conversationId,
-        questionText: prompt,
-        role: "user",
-      })
-      .catch(
-        (err) =>
-          `Impossible to submit the Question! (Error: ${err.message as string})`
-      );
+    submitQuestion.mutateAsync({
+      conversationId: conversationId,
+      questionText: prompt,
+      role: "user",
+    });
 
     const response = await fetch("/api/auth/askQuestion", {
       method: "POST",
@@ -46,25 +41,15 @@ export const ChatInput = () => {
         model: "gpt-3.5-turbo",
         messages: newMessages,
       }),
-    })
-      .then((response) => response.json())
-      .catch(
-        (err) =>
-          `Impossible to fetch ChatGPT API! (Error: ${err.message as string})`
-      );
+    }).then((response) => response.json());
 
     const answer = response.answer.content.toString();
 
-    submitResponse
-      .mutateAsync({
-        conversationId: conversationId,
-        responseText: answer,
-        role: "assistant",
-      })
-      .catch(
-        (err) =>
-          `Impossible to submit the Response! (Error: ${err.message as string})`
-      );
+    submitResponse.mutateAsync({
+      conversationId: conversationId,
+      responseText: answer,
+      role: "assistant",
+    });
   };
 
   return (

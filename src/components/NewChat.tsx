@@ -15,7 +15,7 @@ function NewChat() {
       .mutateAsync({
         userId,
       })
-      .catch((err) => console.log(err.message, "error"));
+      .catch((err) => console.log(err));
   };
 
   return (

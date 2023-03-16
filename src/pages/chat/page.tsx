@@ -1,6 +1,6 @@
 import React from "react";
-import Chat from "~/pages/components/Chat";
-import { ChatInput } from "~/pages/components/ChatInput";
+import Chat from "~/components/Chat";
+import { ChatInput } from "~/components/ChatInput";
 
 function ChatPage() {
   return (
