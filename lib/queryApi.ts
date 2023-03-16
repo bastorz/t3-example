@@ -11,7 +11,11 @@ const query = async (
       messages,
       temperature: 1,
     })
-    .then((res) => res.data.choices[0]?.message);
+    .then((res) => res.data.choices[0]?.message)
+    .catch(
+      (err) =>
+        `ChatGPT was unable to find an answer for that! (Error: ${err.message})`
+    );
 
   return res;
 };

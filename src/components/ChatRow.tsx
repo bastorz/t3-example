@@ -16,21 +16,21 @@ function ChatRow({ id }: Props) {
     conversationId,
   });
   const getQuestionText = conversations.data?.id;
-  const removeChat = () => {
-    deleteConversation.mutateAsync({
-      conversationId: conversationId,
-    });
-  };
+  // const removeChat = () => {
+  //   deleteConversation.mutateAsync({
+  //     conversationId: conversationId,
+  //   });
+  // };
   return (
     <Link href={`/chat/${conversationId}`} className={`chatRow justify-center`}>
       <ChatBubbleLeftIcon className="h-5 w-5" />
       <p className="hidden flex-1 truncate md:inline-flex">
         {getQuestionText || "New Chat"}
       </p>
-      <TrashIcon
+      {/* <TrashIcon
         onClick={removeChat}
         className="h-5 w-5 text-gray-700 hover:text-red-700"
-      />
+      /> */}
     </Link>
   );
 }
