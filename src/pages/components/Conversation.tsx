@@ -7,14 +7,13 @@ type Props = {
   conversationId: string;
 };
 
-// Preguntar a fofer cual seria el type para el array de Questions
-
 function Conversation({ conversation }: Props) {
-  const messageRole: string = conversation.role;
-  const isBot: boolean = messageRole === "assistant";
+  const isBot = conversation.role;
 
   return (
-    <div className={`py-5 text-white ${isBot && "bg-[#434654]"}`}>
+    <div
+      className={`py-5 text-white ${isBot === "assistant" && "bg-[#434654]"}`}
+    >
       <div className="mx-auto flex max-w-2xl space-x-5 px-10">
         {!isBot ? (
           <UserIcon className="h-12 w-12 shrink-0" />

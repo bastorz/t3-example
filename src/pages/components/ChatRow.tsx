@@ -17,9 +17,11 @@ function ChatRow({ id }: Props) {
   });
   const getQuestionText = conversations.data?.id;
   const removeChat = () => {
-    deleteConversation.mutateAsync({
-      conversationId: conversationId,
-    });
+    deleteConversation
+      .mutateAsync({
+        conversationId: conversationId,
+      })
+      .catch((err) => console.log(err, "delete conversation error"));
   };
   return (
     <Link href={`/chat/${conversationId}`} className={`chatRow justify-center`}>

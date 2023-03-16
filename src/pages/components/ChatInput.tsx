@@ -10,8 +10,8 @@ export const ChatInput = () => {
   const [prompt, setPrompt] = useState("");
   const submitQuestion = api.message.submitQuestion.useMutation();
   const submitResponse = api.message.submitResponse.useMutation();
-  const conversationIdFromPathname: string = usePathname();
-  const conversationId: string = conversationIdFromPathname.substring(
+  const conversationIdFromPathname = usePathname();
+  const conversationId = conversationIdFromPathname.substring(
     conversationIdFromPathname.lastIndexOf("/") + 1
   );
 
