@@ -1,6 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { api } from "~/utils/api";

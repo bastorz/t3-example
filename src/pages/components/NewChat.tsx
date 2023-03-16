@@ -11,11 +11,11 @@ function NewChat() {
   const createConversation = api.conversation.createConversation.useMutation();
 
   const createNewConversation = async () => {
-    createConversation.mutateAsync({
-      userId,
-    });
-
-    const conversationId = (await createConversation.data?.id) as string;
+    createConversation
+      .mutateAsync({
+        userId,
+      })
+      .catch((err) => console.log(err, "error"));
   };
 
   return (
