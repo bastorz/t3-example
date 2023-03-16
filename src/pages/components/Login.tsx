@@ -3,9 +3,7 @@ import { ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 
-type Props = {};
-
-function WelcomePage({}: Props) {
+function WelcomePage() {
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-[#0c3b30] text-center">
       <Image

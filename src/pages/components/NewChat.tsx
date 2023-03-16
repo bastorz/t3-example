@@ -4,9 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { api } from "~/utils/api";
 
-type Props = {};
-
-function NewChat({}: Props) {
+function NewChat() {
   const router = useRouter();
   const { data: session } = useSession();
   const userId = session?.user.id as string;

@@ -4,9 +4,7 @@ import { api } from "~/utils/api";
 import ChatRow from "./ChatRow";
 import NewChat from "./NewChat";
 
-type Props = {};
-
-function Sidebar({}: Props) {
+function Sidebar() {
   const { data: session } = useSession();
   const userId = session?.user.id as string;
 
