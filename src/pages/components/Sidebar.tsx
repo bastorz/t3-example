@@ -1,4 +1,4 @@
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import React from "react";
 import { api } from "~/utils/api";
 import ChatRow from "./ChatRow";
@@ -13,8 +13,6 @@ function Sidebar({}: Props) {
   const conversations = api.user.getUser.useQuery({
     userId,
   });
-
-  const conversationId = conversations.data?.id as string;
 
   return (
     <div className="flex h-screen flex-col p-2">

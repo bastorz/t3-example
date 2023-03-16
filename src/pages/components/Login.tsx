@@ -1,7 +1,5 @@
 import React from "react";
 import { ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router";
-import { api } from "~/utils/api";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 

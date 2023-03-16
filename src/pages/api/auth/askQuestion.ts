@@ -1,7 +1,5 @@
-import postAnswer from "lib/postAnswer";
 import query from "lib/queryApi";
 import { NextApiRequest, NextApiResponse } from "next";
-import { api } from "~/utils/api";
 
 type Data = {
   answer: string;
@@ -28,10 +26,7 @@ export default async function handler(
     },
   };
 
-  // const answer = await postAnswer(resMessage);
-
   const data = resMessage.messages.content.content;
 
   res.status(200).json({ answer: resMessage.messages.content });
-  console.log(resMessage.messages.content.content, "responsePerrito");
 }

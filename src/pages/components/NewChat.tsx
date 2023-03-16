@@ -18,10 +18,6 @@ function NewChat({}: Props) {
     });
 
     const conversationId = (await createConversation.data?.id) as string;
-
-    console.log(conversationId, "this is the conversationID");
-
-    // await router.replace(`/chat/${conversationId}`);
   };
 
   return (
