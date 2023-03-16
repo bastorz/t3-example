@@ -1,3 +1,5 @@
+"use client";
+
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { usePathname } from "next/navigation";
 import { FormEvent, useState } from "react";

@@ -1,9 +1,9 @@
+"use client";
+
 import { ChatBubbleLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
 import { api } from "~/utils/api";
 
 type Props = {
@@ -11,10 +11,7 @@ type Props = {
 };
 
 function ChatRow({ id }: Props) {
-  const pathname = usePathname();
-  const router = useRouter();
   const { data: session } = useSession();
-  const [active, setActive] = useState(false);
   const userId = session?.user.id as string;
   const conversationId = id;
   const deleteConversation = api.conversation.deleteConversation.useMutation();
