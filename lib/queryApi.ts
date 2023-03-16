@@ -17,7 +17,7 @@ const query = async (
         `ChatGPT was unable to find an answer for that! (Error: ${err.message})`
     );
 
-  return res;
+  return res as string;
 };
 
 export default query;
