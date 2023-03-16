@@ -1,7 +1,6 @@
 "use client";
 
 import { ChatBubbleLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 import { api } from "~/utils/api";
@@ -11,7 +10,6 @@ type Props = {
 };
 
 function ChatRow({ id }: Props) {
-  const { data: session } = useSession();
   const conversationId = id;
   const deleteConversation = api.conversation.deleteConversation.useMutation();
   const conversations = api.conversation.getConversationById.useQuery({

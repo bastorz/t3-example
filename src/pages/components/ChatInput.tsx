@@ -2,15 +2,16 @@
 
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { usePathname } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import { api } from "~/utils/api";
 
 export const ChatInput = () => {
   const [prompt, setPrompt] = useState("");
   const submitQuestion = api.message.submitQuestion.useMutation();
   const submitResponse = api.message.submitResponse.useMutation();
-  const conversationIdFromPathname = usePathname();
-  const conversationId = conversationIdFromPathname.substring(
+  const conversationIdFromPathname: string = usePathname();
+  const conversationId: string = conversationIdFromPathname.substring(
     conversationIdFromPathname.lastIndexOf("/") + 1
   );
 

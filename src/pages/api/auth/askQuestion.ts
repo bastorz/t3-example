@@ -1,5 +1,5 @@
 import query from "lib/queryApi";
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
   answer: string;

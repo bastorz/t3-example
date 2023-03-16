@@ -1,6 +1,5 @@
 import { ComputerDesktopIcon, UserIcon } from "@heroicons/react/24/outline";
 import type { Message } from "@prisma/client";
-import { useSession } from "next-auth/react";
 import React from "react";
 
 type Props = {
@@ -11,8 +10,8 @@ type Props = {
 // Preguntar a fofer cual seria el type para el array de Questions
 
 function Conversation({ conversation }: Props) {
-  const messageRole = conversation.role;
-  const isBot = messageRole === "assistant";
+  const messageRole: string = conversation.role;
+  const isBot: boolean = messageRole === "assistant";
 
   return (
     <div className={`py-5 text-white ${isBot && "bg-[#434654]"}`}>
