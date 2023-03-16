@@ -32,7 +32,10 @@ export const ChatInput = () => {
         questionText: prompt,
         role: "user",
       })
-      .catch((err) => console.log(err.message, "submit question error"));
+      .catch(
+        (err) =>
+          `Impossible to submit the Question! (Error: ${err.message as string})`
+      );
 
     const response = await fetch("/api/auth/askQuestion", {
       method: "POST",
@@ -45,7 +48,10 @@ export const ChatInput = () => {
       }),
     })
       .then((response) => response.json())
-      .catch((err) => console.log(err.message, "fetch openAPI error"));
+      .catch(
+        (err) =>
+          `Impossible to fetch ChatGPT API! (Error: ${err.message as string})`
+      );
 
     const answer = response.answer.content.toString();
 
@@ -55,7 +61,10 @@ export const ChatInput = () => {
         responseText: answer,
         role: "assistant",
       })
-      .catch((err) => console.log(err.message, "submit response error"));
+      .catch(
+        (err) =>
+          `Impossible to submit the Response! (Error: ${err.message as string})`
+      );
   };
 
   return (

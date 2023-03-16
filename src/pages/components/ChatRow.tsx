@@ -21,7 +21,10 @@ function ChatRow({ id }: Props) {
       .mutateAsync({
         conversationId: conversationId,
       })
-      .catch((err) => console.log(err.message, "delete conversation error"));
+      .catch(
+        (err) =>
+          `Impossible to Remove Conversation! (Error: ${err.message as string})`
+      );
   };
   return (
     <Link href={`/chat/${conversationId}`} className={`chatRow justify-center`}>
