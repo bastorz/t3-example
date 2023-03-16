@@ -1,11 +1,16 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import { usePathname } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { api } from "~/utils/api";
 
 export const ChatInput = () => {
   const [prompt, setPrompt] = useState("");
-  const submitQuestion = api.question.submitQuestion.useMutation();
-  const submitAnswer = api.answer.submitAnswer.useMutation();
+  const submitQuestion = api.message.submitQuestion.useMutation();
+  const submitResponse = api.message.submitResponse.useMutation();
+  const conversationIdFromPathname = usePathname();
+  const conversationId = conversationIdFromPathname.substring(
+    conversationIdFromPathname.lastIndexOf("/") + 1
+  );
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,8 +24,9 @@ export const ChatInput = () => {
     ];
 
     submitQuestion.mutateAsync({
-      conversationId: "clfa6r5pv007aunu4l94lgbfb",
+      conversationId: conversationId,
       questionText: prompt,
+      role: "user",
     });
 
     const response = await fetch("/api/auth/askQuestion", {
@@ -36,15 +42,16 @@ export const ChatInput = () => {
 
     const answer = response.answer.content.toString();
 
-    submitAnswer.mutateAsync({
-      conversationId: "clfa6r5pv007aunu4l94lgbfb",
-      answerText: answer,
+    submitResponse.mutateAsync({
+      conversationId: conversationId,
+      responseText: answer,
+      role: "assistant",
     });
   };
 
   return (
-    <div className="text-md flex rounded-lg bg-gray-100">
-      <form onSubmit={sendMessage} action="" className="flex-1 space-x-5 p-5">
+    <div className="text-md flexrounded-md bg-gray-700/50 text-gray-400">
+      <form onSubmit={sendMessage} action="" className="flex space-x-5 p-5">
         <input
           className="flex-1 bg-transparent focus:outline-none"
           value={prompt}

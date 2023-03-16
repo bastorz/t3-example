@@ -6,5 +6,10 @@ interface NewMessage {
 }
 
 interface Conversation {
-  id: string;
+  id: String;
+  createdAt: Date;
+  updatedAt: Date;
+  user: User;
+  userId: String;
+  message: Message[];
 }
