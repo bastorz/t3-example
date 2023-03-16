@@ -10,7 +10,7 @@ function NewChat() {
   const userId = session?.user.id as string;
   const createConversation = api.conversation.createConversation.useMutation();
 
-  const createNewConversation = async () => {
+  const createNewConversation = () => {
     createConversation
       .mutateAsync({
         userId,
@@ -20,7 +20,7 @@ function NewChat() {
 
   return (
     <div
-      onClick={createNewConversation}
+      onClick={() => createNewConversation()}
       className="chatRow border border-gray-700"
     >
       <PlusIcon className="h-4 w-4" />
