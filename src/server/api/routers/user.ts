@@ -19,7 +19,7 @@ export const userRouter = createTRPCRouter({
         },
       });
     }),
-  createUser: publicProcedure.mutation(({ ctx, input }) => {
+  createUser: publicProcedure.mutation(({ ctx }) => {
     return ctx.prisma.user.create({
       data: {},
     });

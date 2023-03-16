@@ -1,5 +1,5 @@
 import { ComputerDesktopIcon, UserIcon } from "@heroicons/react/24/outline";
-import { Message } from "@prisma/client";
+import type { Message } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import React from "react";
 
@@ -11,10 +11,6 @@ type Props = {
 // Preguntar a fofer cual seria el type para el array de Questions
 
 function Conversation({ conversation }: Props) {
-  const { data: session } = useSession();
-
-  const userImage = session?.user.image as string;
-  const conversationId = conversation.id;
   const messageRole = conversation.role;
   const isBot = messageRole === "assistant";
 

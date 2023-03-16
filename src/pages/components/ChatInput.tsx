@@ -25,11 +25,13 @@ export const ChatInput = () => {
       },
     ];
 
-    submitQuestion.mutateAsync({
-      conversationId: conversationId,
-      questionText: prompt,
-      role: "user",
-    });
+    submitQuestion
+      .mutateAsync({
+        conversationId: conversationId,
+        questionText: prompt,
+        role: "user",
+      })
+      .catch((err) => console.log(err, "submit question error"));
 
     const response = await fetch("/api/auth/askQuestion", {
       method: "POST",
@@ -40,15 +42,19 @@ export const ChatInput = () => {
         model: "gpt-3.5-turbo",
         messages: newMessages,
       }),
-    }).then((response) => response.json());
+    })
+      .then((response) => response.json())
+      .catch((err) => console.log(err, "fetch openAPI error"));
 
     const answer = response.answer.content.toString();
 
-    submitResponse.mutateAsync({
-      conversationId: conversationId,
-      responseText: answer,
-      role: "assistant",
-    });
+    submitResponse
+      .mutateAsync({
+        conversationId: conversationId,
+        responseText: answer,
+        role: "assistant",
+      })
+      .catch((err) => console.log(err, "submit response error"));
   };
 
   return (

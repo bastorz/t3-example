@@ -12,7 +12,6 @@ type Props = {
 
 function ChatRow({ id }: Props) {
   const { data: session } = useSession();
-  const userId = session?.user.id as string;
   const conversationId = id;
   const deleteConversation = api.conversation.deleteConversation.useMutation();
   const conversations = api.conversation.getConversationById.useQuery({

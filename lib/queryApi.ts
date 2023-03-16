@@ -1,6 +1,10 @@
+import { ChatCompletionRequestMessage } from "openai";
 import openai from "./chatgpt";
 
-const query = async (model: string, messages: any) => {
+const query = async (
+  model: string,
+  messages: ChatCompletionRequestMessage[]
+) => {
   const res = await openai
     .createChatCompletion({
       model,

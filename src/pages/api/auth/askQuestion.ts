@@ -26,7 +26,5 @@ export default async function handler(
     },
   };
 
-  const data = resMessage.messages.content.content;
-
   res.status(200).json({ answer: resMessage.messages.content });
 }
