@@ -8,12 +8,12 @@ import Image from "next/image";
 function WelcomePage() {
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-[#0c3b30] text-center">
-      <Image
+      {/* <Image
         src="/chatbot-logo.png"
         width={300}
         height={300}
         alt="chatbot logo"
-      />
+      /> */}
       <div className="flex space-x-2 pt-10">
         <button
           onClick={() => signIn()}
@@ -21,7 +21,7 @@ function WelcomePage() {
         >
           Sign In to use ChatBot
         </button>
-        <ChevronDoubleRightIcon className=" mt-[9px] h-6 w-6 animate-pulse text-white" />
+        {/* <ChevronDoubleRightIcon className=" mt-[9px] h-6 w-6 animate-pulse text-white" /> */}
       </div>
     </div>
   );
