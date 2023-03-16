@@ -19,7 +19,7 @@ const query = async (
         })`
     );
 
-  return res;
+  return res as string;
 };
 
 export default query;
