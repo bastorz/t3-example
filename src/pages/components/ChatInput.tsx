@@ -32,7 +32,7 @@ export const ChatInput = () => {
         questionText: prompt,
         role: "user",
       })
-      .catch((err) => console.log(err, "submit question error"));
+      .catch((err) => console.log(err.message, "submit question error"));
 
     const response = await fetch("/api/auth/askQuestion", {
       method: "POST",
@@ -45,7 +45,7 @@ export const ChatInput = () => {
       }),
     })
       .then((response) => response.json())
-      .catch((err) => console.log(err, "fetch openAPI error"));
+      .catch((err) => console.log(err.message, "fetch openAPI error"));
 
     const answer = response.answer.content.toString();
 
@@ -55,7 +55,7 @@ export const ChatInput = () => {
         responseText: answer,
         role: "assistant",
       })
-      .catch((err) => console.log(err, "submit response error"));
+      .catch((err) => console.log(err.message, "submit response error"));
   };
 
   return (

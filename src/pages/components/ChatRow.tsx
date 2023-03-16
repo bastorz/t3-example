@@ -21,7 +21,7 @@ function ChatRow({ id }: Props) {
       .mutateAsync({
         conversationId: conversationId,
       })
-      .catch((err) => console.log(err, "delete conversation error"));
+      .catch((err) => console.log(err.message, "delete conversation error"));
   };
   return (
     <Link href={`/chat/${conversationId}`} className={`chatRow justify-center`}>
